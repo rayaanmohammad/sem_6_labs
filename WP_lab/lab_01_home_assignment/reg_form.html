@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>reg_form</title>
+    </head>
+    <body>
+        <header>
+            <h2>Conference Registration Form</h2>
+        </header>
+        <hr>
+        <form action="reg_form_result.html" method="GET">
+            
+            <fieldset>
+                <legend>Participation Details</legend>
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="example@domain.com" required>
+                <br><br>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" maxlength="10" pattern="\d{10}" required placeholder="Enter your phone number">
+                <br><br>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="60" required>
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Event Preferences</legend>
+                <label for="events">Select up to two events:</label><br><br>
+                <select id="events" name="events[]" multiple size="5" required>
+                    <option value="coding">Coding Contest</option>
+                    <option value="hackathon">Hackathon</option>
+                    <option value="paper">Paper Presentation</option>
+                    <option value="robotics">Robotics Challenge</option>
+                    <option value="keynote">Keynote Session</option>
+                </select>
+                <p>Hold Ctrl (Windows) or Command (Mac) to select multiple options.</p>
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Accommodation Details</legend>
+                <input type="radio" id="hostel" name="accommodation" value="hostel" required>
+                <label for="hostel">Hostel</label>
+                <input type="radio" id="hotel" name="accommodation" value="hotel" required>
+                <label for="hotel">Hotel</label>
+                <input type="radio" id="none" name="accommodation" value="none" required>
+                <label for="none">None</label>
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Dietary Preferences</legend>
+                <input type="checkbox" id="veg" name="diet[]" value="vegetarian">
+                <label for="veg">Vegetarian</label>
+                <input type="checkbox" id="nonveg" name="diet[]" value="non-vegetarian">
+                <label for="nonveg">Non-Vegetarian</label>
+                <input type="checkbox" id="vegan" name="diet[]" value="vegan">
+                <label for="vegan">Vegan</label>
+                <input type="checkbox" id="other_diet" name="diet[]" value="other">
+                <label for="other_diet">Other</label>
+                <input type="text" id="other_text" name="other_diet_detail" placeholder="Specify other">
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Additional Info</legend>
+                <label for="file">Upload Student ID (PDF only, max 5MB):</label>
+                <input type="file" id="file" name="student_id" accept=".pdf" required>
+                <br><br>
+                <label for="comments">Comments/Requests (optional, max 300 characters):</label><br><br>
+                <textarea id="comments" name="comments" maxlength="300" rows="4" cols="50" placeholder="Enter any additional comments here..."></textarea>
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Agreement</legend>
+                <label for="agree">Agree to terms and conditions:</label>
+                <input type="checkbox" id="agree" name="agree" required>
+            </fieldset>
+            <br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+            <br><br><hr>
+        </form>
+    </body>
+</html>

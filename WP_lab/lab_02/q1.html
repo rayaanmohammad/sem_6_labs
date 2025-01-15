@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>train_booking</title>
+        <link rel="stylesheet" href="styles_1.css">
+    </head>
+    <body>
+        <h1>Train Ticket Booking Form</h1>
+        <form action="q1_result.html" method="GET">
+            <div class="personal-details">
+                <h3>Personal Details</h3>
+                <div class="form-group">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="example@domain.com" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" maxlength="10" pattern="\d{10}" required placeholder="Enter your phone number">
+                </div>
+            
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="60" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender: 
+                        <input type="radio" id="male" name="gender" value="male" required>Male
+                        <input type="radio" id="female" name="gender" value="female" required>Female
+                        <input type="radio" id="others" name="gender" value="others" required>Others
+                    </label>
+                </div>
+            </div>
+            <div class="journey-details">
+                <h3>Journey Details</h3>
+                <div class="form-group">
+                    <label for="travel_date">Date of Travel:</label>
+                    <input type="date" id="travel_date" name="travel_date">
+                </div>
+                <div class="form-group">
+                    <label>Type of Ticket: 
+                        <input type="radio" id="one_way" name="ticket_type" value="one_way" required>One-Way
+                        <input type="radio" id="round_trip" name="ticket_type" value="round_trip" required>Round-Trip
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="departure_station">Departure Station:</label>
+                    <input type="text" id="departure_station" name="departure_station" placeholder="Enter departure station" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="arrival_station">Arrival/Destination Station:</label>
+                    <input type="text" id="arrival_station" name="arrival_station" placeholder="Enter arrival station" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="boarding_station">Boarding Station:</label>
+                    <input type="text" id="boarding_station" name="boarding_station" placeholder="Enter boarding station" required>
+                </div>
+            </div>
+            <div class="travel-preferences">
+                <h3>Travel Preferences</h3>
+                <div class="form-group">
+                    <label for="travel_class">Class of Travel:</label>
+                    <select id="travel_class" name="travel_class" required>
+                        <option value="">Select Class</option>
+                        <option value="first_class">First Class</option>
+                        <option value="second_class">Second Class</option>
+                        <option value="sleeper">Sleeper</option>
+                        <option value="ac_3tier">AC 3-Tier</option>
+                        <option value="ac_2tier">AC 2-Tier</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengers">Number of Passengers:</label>
+                    <input type="number" id="passengers" name="passengers" min="1" max="6" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Berth Preference:</label>
+                    <input type="radio" id="lower_berth" name="berth_preference" value="lower">Lower
+                    <input type="radio" id="upper_berth" name="berth_preference" value="upper">Upper
+                </div>
+                
+                <div class="form-group">
+                    <label>Seat Preference:</label>
+                    <input type="radio" id="window" name="seat_preference" value="window">Window
+                    <input type="radio" id="aisle" name="seat_preference" value="aisle">Aisle
+                </div>
+                
+                <div class="form-group">
+                    <label>Meal Preference:</label>
+                    <input type="checkbox" id="veg_meal" name="meal_preference" value="vegetarian">Vegetarian
+                    <input type="checkbox" id="non_veg_meal" name="meal_preference" value="non_vegetarian">Non-Vegetarian
+                </div>
+            </div>
+            <div class="form-buttons">
+                <label for="agree">Agree to terms and conditions:</label>
+                <input type="checkbox" id="agree" name="agree" required>
+                <br>
+                <br>
+                <input type="submit" value="Book Ticket" class="submit-btn">
+                <input type="reset" value="Reset Form" class="reset-btn">
+            </div>
+        </form>
+    </body>
+</html>

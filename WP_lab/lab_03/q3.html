@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: lightsteelblue;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+        }
+
+        .input-group input {
+            padding: 10px;
+            width: 200px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Grade Calculator</h2>
+    <div class="container">
+        <div class="input-group">
+            <label for="marks1">Marks of Subject 1:</label>
+            <input type="number" id="marks1" placeholder="Enter marks for Subject 1">
+        </div>
+
+        <div class="input-group">
+            <label for="marks2">Marks of Subject 2:</label>
+            <input type="number" id="marks2" placeholder="Enter marks for Subject 2">
+        </div>
+
+        <div class="input-group">
+            <label for="marks3">Marks of Subject 3:</label>
+            <input type="number" id="marks3" placeholder="Enter marks for Subject 3">
+        </div>
+
+        <div class="input-group">
+            <label for="marks4">Marks of Subject 4:</label>
+            <input type="number" id="marks4" placeholder="Enter marks for Subject 4">
+        </div>
+
+        <button onclick="calculateGrade()">Calculate Grade</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            const marks1 = parseFloat(document.getElementById('marks1').value);
+            const marks2 = parseFloat(document.getElementById('marks2').value);
+            const marks3 = parseFloat(document.getElementById('marks3').value);
+            const marks4 = parseFloat(document.getElementById('marks4').value);
+
+            if (isNaN(marks1) || isNaN(marks2) || isNaN(marks3) || isNaN(marks4)) {
+                document.getElementById('result').innerText = 'Please enter valid marks for all subjects.';
+                return;
+            }
+
+            const average = (marks1 + marks2 + marks3 + marks4) / 4;
+
+            let grade;
+            if (average > 90) {
+                grade = 'A';
+            } else if (average > 80) {
+                grade = 'B';
+            } else if (average > 70) {
+                grade = 'C';
+            } else if (average > 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById('result').innerText = `Your average is ${average.toFixed(2)}. Grade: ${grade}`;
+        }
+    </script>
+
+</body>
+</html>

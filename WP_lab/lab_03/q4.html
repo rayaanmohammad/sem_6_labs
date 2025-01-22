@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Color Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 40vh;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        label {
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        input[type="radio"] {
+            margin: 0 5px;
+        }
+
+        .radio-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Primary Color Preview</h2>
+
+    <div class="container">
+        <div class="radio-buttons">
+            <label>
+                <input type="radio" name="color" value="red" onclick="previewColor('red')" id="red"> Red
+            </label>
+            <label>
+                <input type="radio" name="color" value="green" onclick="previewColor('green')" id="green"> Green
+            </label>
+            <label>
+                <input type="radio" name="color" value="blue" onclick="previewColor('blue')" id="blue"> Blue
+            </label>
+        </div>
+
+        <div id="colorBox" class="color-box"></div>
+    </div>
+
+    <script>
+        function previewColor(color) {
+            const colorBox = document.getElementById('colorBox');
+            colorBox.style.backgroundColor = color;
+        }
+
+        window.onload = function() {
+            previewColor('red');
+            document.getElementById('red').checked = true;
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: lightsteelblue;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .answer {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .answer:hover {
+            background-color: #e0e0e0;
+        }
+
+        .correct {
+            background-color: green;
+            color: white;
+        }
+
+        .incorrect {
+            background-color: red;
+            color: white;
+        }
+
+        .correct-answer {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>SIMPLE QUIZ</h2>
+    <div id="question1" class="question">
+        <p>1. What is the capital of France?</p>
+        <div class="answer" data-answer="A">A) Berlin</div>
+        <div class="answer" data-answer="B">B) Madrid</div>
+        <div class="answer" data-answer="C">C) Paris</div>
+        <div class="answer" data-answer="D">D) Rome</div>
+    </div>
+
+    <div id="question2" class="question">
+        <p>2. Which planet is known as the Red Planet?</p>
+        <div class="answer" data-answer="A">A) Earth</div>
+        <div class="answer" data-answer="B">B) Mars</div>
+        <div class="answer" data-answer="C">C) Jupiter</div>
+        <div class="answer" data-answer="D">D) Venus</div>
+    </div>
+
+    <div id="question3" class="question">
+        <p>3. Who wrote "Romeo and Juliet"?</p>
+        <div class="answer" data-answer="A">A) Charles Dickens</div>
+        <div class="answer" data-answer="B">B) William Shakespeare</div>
+        <div class="answer" data-answer="C">C) Mark Twain</div>
+        <div class="answer" data-answer="D">D) Jane Austen</div>
+    </div>
+
+    <div id="question4" class="question">
+        <p>4. What is the largest ocean on Earth?</p>
+        <div class="answer" data-answer="A">A) Atlantic Ocean</div>
+        <div class="answer" data-answer="B">B) Indian Ocean</div>
+        <div class="answer" data-answer="C">C) Arctic Ocean</div>
+        <div class="answer" data-answer="D">D) Pacific Ocean</div>
+    </div>
+
+    <div id="question5" class="question">
+        <p>5. Who painted the Mona Lisa?</p>
+        <div class="answer" data-answer="A">A) Pablo Picasso</div>
+        <div class="answer" data-answer="B">B) Vincent van Gogh</div>
+        <div class="answer" data-answer="C">C) Leonardo da Vinci</div>
+        <div class="answer" data-answer="D">D) Claude Monet</div>
+    </div>
+
+    <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+
+    <script>
+        const correctAnswers = {
+            question1: 'C',
+            question2: 'B',
+            question3: 'B',
+            question4: 'D',
+            question5: 'C'
+        };
+
+        const questions = document.querySelectorAll('.question');
+
+        questions.forEach((question) => {
+            const answers = question.querySelectorAll('.answer');
+            answers.forEach((answer) => {
+                answer.addEventListener('click', () => checkAnswer(question, answer));
+            });
+        });
+
+        function checkAnswer(questionDiv, selectedAnswerDiv) {
+            const selectedAnswer = selectedAnswerDiv.getAttribute('data-answer');
+            const correctAnswer = correctAnswers[questionDiv.id];
+
+            const answers = questionDiv.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.classList.remove('correct', 'incorrect', 'correct-answer');
+            });
+
+            if (selectedAnswer === correctAnswer) {
+                selectedAnswerDiv.classList.add('correct');
+            } else {
+                selectedAnswerDiv.classList.add('incorrect');
+                const correctAnswerDiv = Array.from(answers).find(answer => answer.getAttribute('data-answer') === correctAnswer);
+                correctAnswerDiv.classList.add('correct-answer');
+            }
+        }
+
+        function resetQuiz() {
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.classList.remove('correct', 'incorrect', 'correct-answer');
+            });
+        }
+    </script>
+
+</body>
+</html>

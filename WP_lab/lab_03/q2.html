@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Clock and Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightsteelblue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .clock {
+            font-size: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .greeting {
+            font-size: 25px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .clock {
+            animation: pulse 1s infinite;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Greeting based on the time :)</h1>
+    <div id="clock" class="clock"></div>
+    <div id="greeting" class="greeting"></div>
+
+    <script>
+        function getGreeting() {
+            const hour = new Date().getHours();
+
+            if (hour >= 0 && hour < 12) {
+                return "Good Morning!";
+            } else if (hour >= 12 && hour < 18) {
+                return "Good Afternoon!";
+            } else {
+                return "Good Evening!";
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            document.getElementById("clock").innerText = timeString;
+            document.getElementById("greeting").innerText = getGreeting();
+        }
+
+        setInterval(updateClock, 1000);
+
+        updateClock();
+    </script>
+
+</body>
+</html>

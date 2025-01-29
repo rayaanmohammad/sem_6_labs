@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vroom</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+    
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+    
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #ffffff86;
+        }
+    
+        .move-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+        }
+    
+        table, img {
+            transition: transform 1s;
+        }
+    
+        img {
+            width: 500px;
+            height: auto;
+            margin-left: 20px;
+        }
+    
+        button {
+            display: block;
+            margin: 100px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#moveButton").click(function(){
+                $(".move-container").animate({
+                    left: "-110%" 
+                }, 2000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="moveButton">Move Table and Image</button>
+
+    <div class="move-container">
+        <table>
+            <tr>
+                <th>Neighbouring Countries</th>
+                <th>Good Countries</th>
+                <th>Also Good Countries</th>
+            </tr>
+            <tr>
+                <td>Nepal</td>
+                <td>United Arab Emirates</td>
+                <td>Pakistan</td>
+            </tr>
+            <tr>
+                <td>Sri Lanka</td>
+                <td>India</td>
+                <td>Bangladesh</td>
+            </tr>
+            <tr>
+                <td>Bangladesh</td>
+                <td>Rwanda</td>
+                <td>China</td>
+            </tr>
+        </table>
+        <img src="cake.jpeg" alt="Sample Image">
+    </div>
+</body>
+</html>

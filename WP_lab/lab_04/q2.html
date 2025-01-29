@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: SteelLightBlue;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .calculator input {
+            width: 80%;
+            padding: 10px 10px 10px 10px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .calculator button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .calculator button.operator {
+            background-color: #b0c4de; 
+        }
+
+        .calculator button.equals {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .calculator button.clear {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>Simple Calculator</h2><br>
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button class="operator">+</button>
+            </div>
+            <div>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button class="operator">-</button>
+            </div>
+            <div>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="operator">*</button>
+            </div>
+            <div>
+                <button>0</button>
+                <button class="clear">C</button>
+                <button class="equals">=</button>
+                <button class="operator">/</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Append clicked button value to the display
+            $('button').not('.clear, .equals').on('click', function() {
+                $('#display').val($('#display').val() + $(this).text());
+            });
+
+            // Clear the display when 'C' button is clicked
+            $('.clear').on('click', function() {
+                $('#display').val('');
+            });
+
+            // Calculate result when '=' button is clicked
+            $('.equals').on('click', function() {
+                try {
+                    var result = eval($('#display').val());
+                    $('#display').val(result);
+                } catch (e) {
+                    $('#display').val('Error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

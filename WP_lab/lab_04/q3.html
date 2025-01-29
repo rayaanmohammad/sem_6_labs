@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card Customizer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+        }
+
+        .left-side {
+            flex: 1;
+            margin-right: 30px;
+        }
+
+        .right-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            border: 5px double black;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0e68c;
+        }
+
+        .card-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cake-img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <h2>Customize Your Birthday Card</h2>
+            
+            <label for="background-color">Background Color:</label>
+            <select id="background-color">
+                <option value="#ffffff">White</option>
+                <option value="#ffcccb">Pink</option>
+                <option value="#add8e6">Light Blue</option>
+                <option value="#90ee90">Light Green</option>
+                <option value="#f0e68c" selected>Yellow</option>
+                <option value="#b0c4de">Steel Light Blue</option>
+            </select><br><br>
+            
+            <label for="font">Choose a Font:</label>
+            <select id="font">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Tahoma">Tahoma</option>
+            </select><br><br>
+            
+            <label>Border Style:</label><br><br>
+            <input type="radio" id="none" name="border-style" value="none"> None<br>
+            <input type="radio" id="double" name="border-style" value="double" checked> Double<br>
+            <input type="radio" id="solid" name="border-style" value="solid"> Solid<br><br>
+            
+            <label for="add-picture">Add Default Picture (Cake):</label>
+            <input type="checkbox" id="add-picture" checked><br><br>
+            
+            <label for="greeting-text">Greeting Text:</label>
+            <input type="text" id="greeting-text" value="Happy Birthday and Many More"><br><br>
+
+            <button id="submit">Apply Changes</button>
+        </div>
+
+        <div class="right-side">
+            <div class="card" id="birthday-card">
+                <div class="card-text" id="card-text">Happy Birthday and Many More</div>
+                <img id="cake-image" class="cake-img" src="cake.jpeg" alt="Cake">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#cake-image').show();
+
+            $('#submit').on('click', function() {
+                var backgroundColor = $('#background-color').val();
+                $('#birthday-card').css('background-color', backgroundColor);
+
+                var font = $('#font').val();
+                $('#card-text').css('font-family', font);
+
+                var selectedBorder = $('input[name="border-style"]:checked').val();
+                if (selectedBorder === 'none') {
+                    $('#birthday-card').css('border', 'none');
+                } else {
+                    $('#birthday-card').css('border', '5px ' + selectedBorder + ' black');
+                }
+
+                if ($('#add-picture').prop('checked')) {
+                    $('#cake-image').show();
+                } else {
+                    $('#cake-image').hide();
+                }
+
+                var greetingText = $('#greeting-text').val();
+                $('#card-text').text(greetingText);
+            });
+        });
+    </script>
+</body>
+</html>
